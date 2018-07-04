@@ -1,0 +1,13 @@
+- name: Install dependencies
+  yum:
+    update_cache: yes
+    name: "{{ packages }}"
+  vars:
+    packages:
+      - java-1.8.0-openjdk.x86_64
+      - http://repo.rundeck.org/latest.rpm
+
+- name: Install rundeck
+  yum:
+    update_cache: yes
+    name: rundeck

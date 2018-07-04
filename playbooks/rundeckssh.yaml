@@ -1,0 +1,24 @@
+---
+- name: Copy public key from rundeck server to nodes
+  hosts: devops
+  tasks:
+   - name: Copy Remote-To-Remote (from serverA to serverB)
+     synchronize: src=/var/lib/rundeck/.ssh/id_rsa.pub dest=/tmp/
+     delegate_to: automation.salas4linux.com.br
+
+- name: Add auth keys
+  hosts: devops
+  tasks:
+    - name: set auth keys
+      authorized_key:
+        user: root
+        state: present
+        key: "{{ lookup('file','/tmp/id_rsa.pub') }}"
+
+- name: remove tmp files
+  hosts: devops
+  tasks:
+    - name: remove /tmp public key
+      file:
+        path: /tmp/id_rsa.pub
+        state: absent

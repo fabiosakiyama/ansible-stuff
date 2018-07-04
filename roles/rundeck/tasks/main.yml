@@ -1,0 +1,6 @@
+---
+# tasks file for rundeck
+- name: Install rundeck
+  hosts: automation
+  tasks:
+    - include: installRundeck.yaml
