@@ -1,0 +1,9 @@
+---
+# tasks file for docker
+- name: Docker
+  hosts: docker
+  tasks:
+    - include: uninstall.yaml
+    - include: installDependencies.yaml
+    - include: addGPGkeyNRepo.yaml
+    - include: installDocker.yaml

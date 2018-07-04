@@ -1,0 +1,8 @@
+- name: Install Puppet Server
+  apt:
+    name: puppetserver
+  when: ansible_os_family == 'Debian'
+
+- name: start and enable puppet server
+  shell: service puppetserver start && service puppetserver enable
+  when: ansible_os_family == 'Debian'

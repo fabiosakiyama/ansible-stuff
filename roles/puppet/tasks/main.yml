@@ -1,0 +1,6 @@
+---
+# tasks file for puppet
+- name: Instalação do Puppet
+  hosts: all
+  tasks:
+    - include: installPuppet.yaml

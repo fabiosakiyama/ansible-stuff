@@ -1,0 +1,11 @@
+---
+# yaml to uninstall current packages of docker
+- name: Remover os pacotes
+  apt:
+    name: "{{ packages }}"
+    state: absent
+  vars:
+    packages:
+      - docker
+      - docker-engine
+      - docker.io

@@ -1,0 +1,17 @@
+---
+- name: Instala pacotes padroes
+  hosts: devops docker
+  tasks:
+    - name: Pacotes
+      apt:
+        name: "{{ packages }}"
+        state: absent
+      vars:
+        packages:
+          - fortune
+          - nano
+          - sl
+          - ccze
+          - dnsutils
+          - cowsay
+        

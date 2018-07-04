@@ -1,0 +1,26 @@
+---
+- name: Apache
+  hosts: dexter
+  tasks:
+    - name: Instalar para Debian
+      apt: 
+        name: apache2
+        state: present
+      when: ansible_os_family == 'Debian'
+
+    - name: Instalar para redhat
+      yum:
+        name: httpd
+        state: present
+      when: ansible_os_family == 'RedHat'
+
+    - name: Copiando o index
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+
+    - name: Reiniciar o apache
+      service:
+        name: apache2
+        state: restarted
+      when: ansible_os_family == 'Debian'

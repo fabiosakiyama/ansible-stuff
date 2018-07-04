@@ -1,0 +1,6 @@
+---
+# tasks file for puppetServer
+- name: Install PuppetServer
+  hosts: devops
+  tasks:
+    - include: installPuppetServer.yaml
