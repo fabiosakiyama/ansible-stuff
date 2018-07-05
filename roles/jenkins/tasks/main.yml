@@ -1,0 +1,6 @@
+---
+# tasks file for jenkins
+- name: Install Jenkins
+  hosts: automation
+  tasks:
+    - include: installJenkins.yaml

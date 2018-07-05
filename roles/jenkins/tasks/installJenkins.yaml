@@ -1,0 +1,22 @@
+- name: Install java
+  yum:
+    update_cache: yes
+    name: java-1.8.0-openjdk.x86_64
+  
+- name: Add repo
+  yum_repository:
+    name: jenkinsrepo
+    description: jenkins repo
+    baseurl: http://pkg.jenkins-ci.org/redhat-stable
+    gpgkey: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+    gpgcheck: yes
+
+- name: Install jenkins
+  yum:
+    update_cache: yes
+    name: " {{ package }} "
+  vars:
+    package:
+      - jenkins
+      - git
+
